@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 import stan
-from stan import StanModel
+# from stan import StanModel
 import pickle as pickle
 from abra.config import STAN_MODEL_CACHE
 
@@ -68,7 +68,8 @@ def get_stan_model(model_name, recompile=False, **model_params):
             model = pickle.load(m)
     else:
         model_code = get_stan_model_code(model_name)
-        model = StanModel(model_code=model_code)
+#         model = StanModel(model_code=model_code)
+        model = stan.build(model_code=model_code, random_seed=1)
         logging.info('Saving model to {}'.format(compiled_model_file))
         with open(compiled_model_file, 'wb') as f:
             pickle.dump(model, f)
