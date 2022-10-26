@@ -1,7 +1,8 @@
 import os
 import sys
 import logging
-from pystan import StanModel
+import stan
+from stan import StanModel
 import pickle as pickle
 from abra.config import STAN_MODEL_CACHE
 
